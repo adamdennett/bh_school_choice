@@ -11,10 +11,12 @@ library(httpuv)
 library(here)
 
 
-BN_pcds_to_school_dist <- st_read("https://www.dropbox.com/scl/fi/hbbcjavns1n873yyxbz3d/BN_pcds_to_school_dist.gpkg?rlkey=t3t2ty3r5596vmzxbyzlnd2sx&raw=1") %>% st_transform(4326)
+#BN_pcds_to_school_dist <- st_read("https://www.dropbox.com/scl/fi/hbbcjavns1n873yyxbz3d/BN_pcds_to_school_dist.gpkg?rlkey=t3t2ty3r5596vmzxbyzlnd2sx&raw=1") %>% st_transform(4326)
+BN_pcds_to_school_dist <- st_read("BN_pcds_to_school_dist.gpkg") %>% st_transform(4326)
 
 
-brighton_sec_schools <- read_csv("https://www.dropbox.com/scl/fi/fhzafgt27v30lmmuo084y/edubasealldata20241003.csv?rlkey=uorw43s44hnw5k9js3z0ksuuq&raw=1") %>%
+#brighton_sec_schools <- read_csv("https://www.dropbox.com/scl/fi/fhzafgt27v30lmmuo084y/edubasealldata20241003.csv?rlkey=uorw43s44hnw5k9js3z0ksuuq&raw=1") %>%
+brighton_sec_schools <- read_csv("edubasealldata20241003.csv") %>%
    clean_names() %>%
    filter(la_name == "Brighton and Hove") %>%
    filter(phase_of_education_name == "Secondary") %>%
